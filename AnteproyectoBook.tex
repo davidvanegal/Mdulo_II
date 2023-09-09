@@ -1,0 +1,442 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  a4paper]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[left=2.5cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{1}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={QUEMAS EN AGROECOSISTEMAS TROPICALES: SU EFECTO SOBRE LAS FUNCIONES ECOLÓGICAS REALIZADAS POR LOS ESCARABAJOS COPRÓFAGOS},
+  pdfauthor={David Vanegas-Alarcón},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{QUEMAS EN AGROECOSISTEMAS TROPICALES: SU EFECTO SOBRE LAS FUNCIONES ECOLÓGICAS REALIZADAS POR LOS ESCARABAJOS COPRÓFAGOS}
+\author{David Vanegas-Alarcón}
+\date{2023-09-08}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1}
+\hypertarget{informaciuxf3n-general}{%
+\chapter{Información general}\label{informaciuxf3n-general}}
+
+Este trabajo tiene como finalidad mostrar los avances que se tienen en el uso de la herramienta R como parte del segundo módulo del curso Introducción a la Investigación del programa de Maestría del Instituto de Ecología A.C.
+
+Para revisar y/o replicar los códigos usados revisar las siguientes plataformas
+
+\includegraphics[width=3.64583in,height=\textheight]{images/github.png}
+
+\url{https://github.com/davidvanegal/Mdulo_II}
+
+\includegraphics[width=3.64583in,height=\textheight]{images/rpubs.png}
+
+\url{https://rpubs.com/DavidVaneAl/1078983}
+
+\textbf{NOTA: } Este trabajo contiene información confidencial del autor, si usted no es el destinatario, le informamos que no podrá usar, retener, imprimir, copiar, distribuir o hacer público su contenido; de hacerlo podría tener consecuencias legales. Si ha recibido este trabajo por error, por favor infórmenos y bórrelo. Si usted es el destinatario, le solicitamos mantener reserva sobre el contenido, los datos o información de contacto y en general sobre la información de este documento y/o archivos adjuntos, a no ser que exista una autorización explícita.
+
+\begin{center}\includegraphics[width=7.1in]{images/Inecol} \end{center}
+
+\hypertarget{introducciuxf3n}{%
+\chapter{Introducción}\label{introducciuxf3n}}
+
+Los pastizales son importantes ya que proveen una amplia variedad de servicios ecosistémicos entre los que se incluyen la captura de carbono y la conservación de la biodiversidad (\protect\hyperlink{ref-dinerstein2007resena}{Dinerstein et al., 2007}). Históricamente, para favorecer y mantener su diversidad y estabilidad, se han utilizado técnicas como el fuego y el pastoreo (\protect\hyperlink{ref-casillo2012quemas}{Casillo et al., 2012}; \protect\hyperlink{ref-flores2016efecto}{Flores Ancira et al., 2016}), en particular, el fuego es un factor ecológico natural que tiene una gran influencia en las especies y en la dinámica de la vegetación de los pastizales naturales, influyendo en la heterogeneidad estructural (\protect\hyperlink{ref-pelaezincendios}{Peláez et al., 2004}; \protect\hyperlink{ref-uboldi2010analisis}{Uboldi et al., 2010}), sin embargo, este puede tener efectos negativos al rebasar las zonas para la que fue delimitado. Por ejemplo, se ha observado una tendencia al aumento de la superficie afectada y de la severidad de los efectos del fuego (\protect\hyperlink{ref-rowell2000global}{Rowell et al., 2000}), donde la superficie anual afectada asciende a 3.4 millones de km\textsuperscript{2} a nivel mundial (\protect\hyperlink{ref-wwf1995}{Found \& Group, 1995}). En México más de 6 016 incendios ocurrieron en 2 021, con un área afectada de más de 469 000 ha (\protect\hyperlink{ref-conafor2022}{Forestal, 2022}).
+
+El fuego puede causar cambios severos en la diversidad de especies, provocando una simplificación del hábitat (\protect\hyperlink{ref-whelan1995ecology}{Whelan, 1995}) por los cambios en sus condiciones microclimáticas y en las propiedades químicas del suelo (\protect\hyperlink{ref-cadena2020efecto}{Cadena et al., 2020}; \protect\hyperlink{ref-sasal2010succession}{Sasal et al., 2010}), el cual es un componente crucial para el para el soporte de la biodiversidad sobre y debajo de la superficie (\protect\hyperlink{ref-coleman2017fundamentals}{Coleman et al., 2017}; \protect\hyperlink{ref-nielsen2015soil}{Nielsen et al., 2015}). El conocimiento de los efectos del fuego sobre el funcionamiento de los ecosistemas y de su recuperación post fuego, evidencia una relación entre la alteración de los procesos ecológicos y los impactos sobre la biota edáfica (\protect\hyperlink{ref-arellano2014efecto}{Arellano \& Castillo-Guevara, 2014}; \protect\hyperlink{ref-reed2011functional}{Reed et al., 2011})
+
+La fauna edáfica puede ser útil para el entendimiento de los impactos del fuego. En particular, los escarabajos coprófagos son un grupo abundante y diverso (\protect\hyperlink{ref-nichols2011dung}{Nichols \& Gardner, 2011}) que forman parte de la macrofauna del suelo, siendo importantes para el funcionamiento de los ecosistemas naturales, debido a su hábito alimenticio y comportamiento de nidificación, que tienen como consecuencia la remoción y enterramiento de las heces de vertebrados (\protect\hyperlink{ref-larsen2011insects}{Larsen et al., 2011}; \protect\hyperlink{ref-milotic2017linking}{Milotić et al., 2017}; \protect\hyperlink{ref-nichols2008ecological}{Nichols et al., 2008}), facilitando procesos ecológicos como la bioturbación del suelo y la dinámica de semillas, servicios ecosistémicos de gran valor económico (\protect\hyperlink{ref-arias2022efecto}{Arias-Álvarez et al., 2022}).
+
+A pesar de su importancia en los ecosistemas, y aunque esté en aumento la información sobre este grupo de insectos (\protect\hyperlink{ref-carvalho2020dung}{Carvalho et al., 2020}), y existan estudios sobre sus funciones ecológicas en agroecosistemas (e.g. \protect\hyperlink{ref-santos2018dung}{Santos-Heredia et al., 2018}), los estudios que relacionan el efecto del fuego en la diversidad de este grupo son pocos y se han realizado mayoritariamente en Brasil (e.g. \protect\hyperlink{ref-francca2020nino}{França et al., 2020}; \protect\hyperlink{ref-gonccalves2022quantifying}{Gonçalves et al., 2022}; \protect\hyperlink{ref-nunes2021functional}{Nunes et al., 2021}) y México (e.g. \protect\hyperlink{ref-arellano2014efecto}{Arellano \& Castillo-Guevara, 2014}). Sin embargo, no hay antecedentes de estudios sobre el efecto de la práctica de la quema y de los incendios accidentales en ambientes de pastoreo sobre las funciones ecológicas proporcionadas por los escarabajos coprófagos. En este sentido se hace necesario comprender la complejidad del fuego y su dinámica para crear estrategias de manejo y conservación de los suelos y sus organismos como soporte de los ecosistemas.
+
+\hypertarget{objetivos}{%
+\chapter{Objetivos}\label{objetivos}}
+
+\hypertarget{objetivo-general}{%
+\section{Objetivo general}\label{objetivo-general}}
+
+Analizar los cambios en la diversidad y funciones ecológicas de los escarabajos coprófagos en agroecosistemas donde existe la práctica de la quema.
+
+\hypertarget{objetivos-especuxedficos}{%
+\section{Objetivos específicos}\label{objetivos-especuxedficos}}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\item
+  Estimar y comparar los valores de diversidad de escarabajos coprófagos entre diferentes agroecosistemas que hayan sufrido quemas como parte del manejo y en agroecosistemas que no realizan quemas en un periodo de 30 años, tomando en cuenta el régimen del fuego en cada parcela.
+\item
+  Cuantificar y comparar los valores de bioturbación, remoción de heces y dispersión de semillasrealizadas por los escarabajos coprófagos en agroecosistemas que hayan sufrido quemas como parte del manejo y en agroecosistemas que no realizan quemas en un periodo de 30 años, tomando en cuenta el régimen del fuego en cada parcela.
+\end{enumerate}
+
+\hypertarget{pregunta}{%
+\section{Pregunta}\label{pregunta}}
+
+¿Los valores de diversidad y funciones ecológicas de escarabajos coprófagos son afectados negativamente por el régimen de fuego en agroecosistemas?
+
+\hypertarget{hipuxf3tesis}{%
+\section{Hipótesis}\label{hipuxf3tesis}}
+
+Los valores de diversidad y funciones ecológicas de escarabajos coprófagos son afectados negativamente por la magnitud, frecuencia e intensidad de las quemas en los ecosistemas, ya que los suelos con mayor superficie, frecuencia e intensidad de quemas presentan cambios negativos en sus propiedades fisicoquímicas, lo que traduce, como una desventaja para el ciclo de vida de estos insectos.
+
+\hypertarget{predicciones}{%
+\section{Predicciones}\label{predicciones}}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\item
+  Los valores de diversidad y funciones ecológicas de escarabajos coprófagos serán menores en agroecosistemas con mayor magnitud, frecuencia e intensidad de quemas.
+\item
+  Los valores de diversidad y funciones ecológicas de escarabajos coprófagos tendrán mayores valores en los sitios con menor superficie, frecuencia e intensidad de quemas.
+\end{enumerate}
+
+\hypertarget{metodologuxeda}{%
+\chapter{Metodología}\label{metodologuxeda}}
+
+\hypertarget{uxe1rea-de-estudio}{%
+\section{Área de estudio}\label{uxe1rea-de-estudio}}
+
+La investigación se realizará en los municipios de Paso de Ovejas, Soledad de Doblado y Puente Nacional en el estado de Veracruz, México (Figura \ref{fig:sitio}). El clima es cálido subhúmedo, la temperatura media anual es de 22 °C y la precipitación es menor a 1 000 mm anuales (\protect\hyperlink{ref-bautista2022estudio}{Bautista-Garcı́a et al., 2022}). El ecosistema original de la zona era la selva baja caducifolia (\protect\hyperlink{ref-gomez2010atlas}{Gómez-Pompa et al., 2010}), actualmente altamente fragmentada por la agricultura y ganadería (\protect\hyperlink{ref-inegi2020}{Estadística y Geografía, 2020}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/sitio} 
+
+}
+
+\caption{Sitio de estudio en el estado de Veracruz, México.}\label{fig:sitio}
+\end{figure}
+
+\hypertarget{diseuxf1o-de-estudio}{%
+\section{Diseño de estudio}\label{diseuxf1o-de-estudio}}
+
+El experimento consistirá en medir las variables de diversidad y funciones ecológicas de los escarabajos coprófagos en 3 tipos de agroecosistemas (vegetación secundaria, pastizales monoespecíficos y pastizales biodiversos) que han sido estudiados según su régimen de manejo ganadero en un trabajo previo (\protect\hyperlink{ref-bautista2022estudio}{Bautista-Garcı́a et al., 2022}). Los sitios cuentan con información sobre la intensidad, frecuencia y magnitud de las quemas. La intensidad se clasificó en nula, baja, media y alta según el porcentaje de producción del agroecosistema y la altura de la vegetación. La frecuencia se consideró nula cuando no se practicaba la quema, baja cuando la quema se realizaba cada 4 o más años, moderada cuando la quema se realizaba cada 2 o 3 años y alta cuando la quema se realizaba cada año. La magnitud se consideró baja cuando se quemaba una tercera parte del agroecosistema, moderada cuando se quemaba la mitad del agroecosistema y alta cuando se quemaba toda la superficie del agroecosistema de estudio. Así, se seleccionarán sitios con nula, baja, moderada y alta intensidad, frecuencia y magnitud de quemas por cada tipo de agroecosistema. En cada sitio, se realizarán muestreos radiales de suelo para conocer su condición fisicoquímica (pH, densidad aparente, N, C, P, K, CIC, materia orgánica, textura y humedad relativa). Los sitios estarán expuestos a las mismas condiciones ambientales, manteniendo la misma ubicación para el registro de los datos expuestos.
+
+\hypertarget{diversidad-y-composiciuxf3n-de-los-escarabajos-copruxf3fagos}{%
+\subsection{Diversidad y composición de los escarabajos coprófagos}\label{diversidad-y-composiciuxf3n-de-los-escarabajos-copruxf3fagos}}
+
+En cada sitio se colocarán 3 trampas de caída dispuestas en las esquinas de un triángulo de 50 m de lado (\protect\hyperlink{ref-larsen2005trap}{Larsen \& Forsyth, 2005}). Las trampas de caída se mantendrán activas por 48 h y consistirán en recipientes plásticos enterrados al nivel del suelo y se protegerán de la lluvia con un plato plástico, con jabón diluido en agua para romper la tensión superficial. Cada trampa se cebará con 50 g de heces frescas de ganado bovino (\protect\hyperlink{ref-arellano2016novel}{Arellano, 2016}). Los escarabajos se identificarán utilizando una recopilación de estudios a nivel local, con el apoyo de claves taxonómicas (e.g. \protect\hyperlink{ref-vaz2011multilingual}{Vaz de Mello et al., 2011}) y la ayuda de especialistas. En cada sitio, se medirá la abundancia y riqueza de la comunidad de los escarabajos.
+
+\hypertarget{funciones-ecoluxf3gicas-de-los-escarabajos-copruxf3fagos}{%
+\subsection{Funciones ecológicas de los escarabajos coprófagos}\label{funciones-ecoluxf3gicas-de-los-escarabajos-copruxf3fagos}}
+
+Se medirán las funciones ecológicas de remoción de estiércol, bioturbación y dispersión de semillas. Para ello, se usarán estaciones para medir las funciones a 2 m de cada trampa de caída. Las estaciones para medir las funciones serán dispuestas 10 días antes de la apertura de las trampas de caída, según lo dispuesto por Arias-Álvarez et al. (\protect\hyperlink{ref-arias2022efecto}{2022}). Para cuantificar de manera más precisa las funciones ecológicas de los escarabajos coprófagos, en cada estación de estudio se dispondrá una maceta, de 32 cm de diámetro y 19 cm de profundidad, según lo propuesto por Arellano (\protect\hyperlink{ref-arellano2016novel}{2016}). Se colocará en una malla plástica (25 mm) sobre el suelo, 1.5 kg de estiércol fresco de ganado bovino alimentado con dietas similares y se protegerá de la lluvia con un techo de malla de fibra de vidrio.
+
+Para cuantificar la dispersión de semillas, se usarán cuentas de madera a manera de semillas artificiales, ya que permiten estandarizar los métodos y evitar la remoción de semillas verdaderas por animales (\protect\hyperlink{ref-andresen2002dung}{Andresen, 2002}). En cada maceta se colocarán 60 cuentas: 5 de 4 mm, 5 de 5 mm, 10 de 6 mm, 20 de 7 mm, 10 de 8 mm y 10 de 9 mm. Después de 48 h, las heces se recogerán y se pesarán para calcular las heces removidas, realizando la corrección de peso por desecación o hidratación; para esto se colocará en cada sitio 1.5 kg de estiércol fresco, protegida por una malla, para impedir cualquier acceso y actividad de los escarabajos. Posteriormente, se extraerán las cuentas no removidas para calcular la proporción de semillas dispersadas. El suelo excavado por los escarabajos será recogido, secado a una temperatura de 70 °C hasta obtener un peso constante, y posteriormente pesado en una balanza de precisión.
+
+\hypertarget{anuxe1lisis-de-datos}{%
+\section{Análisis de datos}\label{anuxe1lisis-de-datos}}
+
+\hypertarget{diversidad-y-estructura-de-los-escarabajos-copruxf3fagos}{%
+\subsection{Diversidad y estructura de los escarabajos coprófagos}\label{diversidad-y-estructura-de-los-escarabajos-copruxf3fagos}}
+
+Se estimará la completitud de las muestras de escarabajos en cada sitio (\protect\hyperlink{ref-chao2012coverage}{Chao \& Jost, 2012}). La diversidad de especies en cada parcela se estimará tilizando la aproximación qD de (\protect\hyperlink{ref-jost2006entropy}{2006}) y los órdenes de diversidad q0, q1 y q2, y la cobertura de la muestra por medio del paquete \emph{``iNext''} (\protect\hyperlink{ref-hsieh2016inext}{Hsieh et al., 2016}). Se utilizará un análisis de Escalamiento Multidimensional No Métrico para comparar la composición de escarabajos entre sitios, con el índice de disimilitud de Bray-Curtis, utilizando el paquete \emph{``vegan''} (\protect\hyperlink{ref-oksanen2010vegan}{Oksanen, 2010}).
+
+\hypertarget{funciones-ecoluxf3gicas-de-los-escarabajos-copruxf3fagos-1}{%
+\subsection{Funciones ecológicas de los escarabajos coprófagos}\label{funciones-ecoluxf3gicas-de-los-escarabajos-copruxf3fagos-1}}
+
+Se analizarán las funciones de los escarabajos en relación con el régimen de quemas (intensidad, frecuencia y magnitud) mediante el análisis del Modelo Lineal Generalizado (GLM), con los paquetes \emph{``lme4''} (\protect\hyperlink{ref-bates2009package}{Bates et al., 2009}) y \emph{``multcomp''} (\protect\hyperlink{ref-hothorn2008simultaneous}{Hothorn et al., 2008}), usando el error correspondiente. Todos los análisis se realizarán en el software R (\protect\hyperlink{ref-R2023}{R Core Team, 2023}).
+
+\hypertarget{calendario-de-actividades}{%
+\chapter{Calendario de actividades}\label{calendario-de-actividades}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.2568}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}
+  >{\centering\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0676}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Meses
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+RB
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+DPI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+OI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+SS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+FM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+FL
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+PD
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+AE
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+ED
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+ADF
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+PDF
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+08-09 / 2023 & X & X & X & & & & & & & & \\
+10 / 2023 & & X & X & X & & & & & & & \\
+11 / 2023 & & & & X & & & & & & & \\
+01 / 2024 & X & & & X & & & & & & & \\
+06-08 / 2024 & & & & & X & X & X & & & & \\
+09-10 / 2024 & & & & & & & & X & & & \\
+11 / 24 - 02 / 25 & & & & & & & & & X & & \\
+03-06 / 2025 & & & & & & & & & & X & \\
+07 / 2025 & & & & & & & & & & & X \\
+\end{longtable}
+
+\textbf{Los cursos de posgrado se tomarán desde agosto de 2023 hasta julio de 2024}. RB = Revisión bibliográfica, DPI = Desarrollo pregunta de investigación, OI = Organización de la información, SS = Selección de sitios, FM = Fase de muestreo, FL = Fase de laboratorio, PD = Procesamiento de los datos, AE = Análisis estadístico, ED = Elaboración del documento, ADF = Ajuste documento final, PDF = Presentación documento final.
+
+\hypertarget{importancia-teuxf3rica-yo-aplicada}{%
+\chapter{Importancia teórica y/o aplicada}\label{importancia-teuxf3rica-yo-aplicada}}
+
+Desde el punto de vista teórico no se ha analizado el efecto del régimen del fuego sobre la diversidad y las funciones ecológicas de los escarabajos coprófagos en México. Estas medidas tienen una importancia directa en la condición del suelo y en la producción de forrajes, pues en donde hay un ensamble diverso de escarabajos estercoleros la condición de las propiedades físicas del suelo mejoran, lo que se refleja en el aumento del crecimiento de los pastos, el número de hijatos, entre otros (\protect\hyperlink{ref-alvarado2019linking}{Alvarado et al., 2019}; \protect\hyperlink{ref-arellano2014efecto}{Arellano \& Castillo-Guevara, 2014}; \protect\hyperlink{ref-beynon2015application}{Beynon et al., 2015}; \protect\hyperlink{ref-brown2010dung}{Brown et al., 2010}; \protect\hyperlink{ref-losey2006economic}{Losey \& Vaughan, 2006}; \protect\hyperlink{ref-saha2021dung}{Saha et al., 2021}; \protect\hyperlink{ref-veldhuis2018spatial}{Veldhuis et al., 2018}).
+
+\hypertarget{bibliografuxeda}{%
+\chapter*{Bibliografía}\label{bibliografuxeda}}
+\addcontentsline{toc}{chapter}{Bibliografía}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-alvarado2019linking}{}}%
+Alvarado, F., Dáttilo, W., \& Escobar, F. (2019). Linking dung beetle diversity and its ecological function in a gradient of livestock intensification management in the neotropical region. \emph{Applied Soil Ecology}, \emph{143}, 173--180.
+
+\leavevmode\vadjust pre{\hypertarget{ref-andresen2002dung}{}}%
+Andresen, E. (2002). Dung beetles in a central amazonian rainforest and their ecological role as secondary seed dispersers. \emph{Ecological Entomology}, \emph{27}(3), 257--270.
+
+\leavevmode\vadjust pre{\hypertarget{ref-arellano2016novel}{}}%
+Arellano, L. (2016). A novel method for measuring dung removal by tunneler dung beetles (coleoptera: Scarabaeidae: Scarabaeinae) in pastures. \emph{The Coleopterists Bulletin}, \emph{70}(1), 185--188.
+
+\leavevmode\vadjust pre{\hypertarget{ref-arellano2014efecto}{}}%
+Arellano, L., \& Castillo-Guevara, C. (2014). Efecto de los incendios forestales no controlados en el ensamble de escarabajos copr{ó}fagos (coleoptera: Scarabaeidae) en un bosque templado del centro de m{é}xico. \emph{Revista Mexicana de Biodiversidad}, \emph{85}(3), 854--865.
+
+\leavevmode\vadjust pre{\hypertarget{ref-arias2022efecto}{}}%
+Arias-Álvarez, G.-A., Vanegas-Alarcón, D.-A., Garcı́a-Hernández, A.-L., Santos-Heredia, C., \& Andresen, E. (2022). Efecto de la cobertura vegetal en escarabajos copr{ó}fagos (coleoptera: Scarabaeinae) y sus funciones ecol{ó}gicas en un bosque andino de colombia. \emph{Revista de Biolog{ı́}a Tropical}, \emph{70}(1), 53--66.
+
+\leavevmode\vadjust pre{\hypertarget{ref-bates2009package}{}}%
+Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., et al. (2009). Package {``lme4.''} \emph{URL Http://Lme4. R-Forge. R-Project. Org}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-bautista2022estudio}{}}%
+Bautista-Garcı́a, G., López-Ortiz, S., Murillo-Cuevas, F. D., Pérez-Hernández, P., Ortega-Jiménez, E., \& López-Collado, C. J. (2022). Estudio preliminar del pastoreo racional voisin como herramienta para mejorar las condiciones del suelo despu{é}s del pastoreo extensivo. \emph{Terra Latinoamericana}, \emph{40}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-beynon2015application}{}}%
+Beynon, S. A., Wainwright, W. A., \& Christie, M. (2015). The application of an ecosystem services framework to estimate the economic value of dung beetles to the UK cattle industry. \emph{Ecological Entomology}, \emph{40}, 124--135.
+
+\leavevmode\vadjust pre{\hypertarget{ref-brown2010dung}{}}%
+Brown, J., Scholtz, C. H., Janeau, J.-L., Grellier, S., \& Podwojewski, P. (2010). Dung beetles (coleoptera: Scarabaeidae) can improve soil hydrological properties. \emph{Applied Soil Ecology}, \emph{46}(1), 9--16.
+
+\leavevmode\vadjust pre{\hypertarget{ref-cadena2020efecto}{}}%
+Cadena, D. A., Flores-Garnica, J. G., Flores-Rodrı́guez, A. G., \& Lomelı́-Zavala, M. E. (2020). Efecto de incendios en la vegetaci{ó}n de sotobosque y propiedades qu{ı́}micas de suelo de bosques templados. \emph{Agro Productividad}, \emph{13}(4).
+
+\leavevmode\vadjust pre{\hypertarget{ref-carvalho2020dung}{}}%
+Carvalho, R. L., Weir, T., Vasconcelos, H. L., \& Andersen, A. N. (2020). Dung beetles of an australian tropical savanna: Species composition, food preferences and responses to experimental fire regimes. \emph{Austral Ecology}, \emph{45}(7), 958--967.
+
+\leavevmode\vadjust pre{\hypertarget{ref-casillo2012quemas}{}}%
+Casillo, J., Di Giacomo, A., \& Marino, G. (2012). Quemas controladas en pastizales. \emph{Una Herramienta Para El Manejo de Pastizales Con Fines Productivos Conservacionistas. Fundaci{ó}n Vida Silvestre Argentina y Aves Argentinas. Buenos Aires}, \emph{19}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-chao2012coverage}{}}%
+Chao, A., \& Jost, L. (2012). Coverage-based rarefaction and extrapolation: Standardizing samples by completeness rather than size. \emph{Ecology}, \emph{93}(12), 2533--2547.
+
+\leavevmode\vadjust pre{\hypertarget{ref-coleman2017fundamentals}{}}%
+Coleman, D. C., Callaham, M. A., \& Crossley Jr, D. (2017). \emph{Fundamentals of soil ecology}. Academic press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-dinerstein2007resena}{}}%
+Dinerstein, E., Olson, D., Atchley, J., Loucks, C., Contreras, S., Abell, R., Iñigo, E., Enkerlin, E., Enrı́quez, C., \& Quero, C. (2007). Rese{ñ}a de la producci{ó}n y suministro de semilla de especies forrajeras en m{é}xico. \emph{Velazco, ZME; Hern{á}ndez, GA; P{é}rezgrovas, R. Y S{á}nchez, MB Producci{ó}n y Manejo de Los Recursos Forrajeros Tropicales. Universidad Aut{ó}noma de Chiapas (UACH). Tuxtla Guti{é}rrez, Chiapas}, 217--237.
+
+\leavevmode\vadjust pre{\hypertarget{ref-inegi2020}{}}%
+Estadística y Geografía, I. N. de. (2020). \emph{Uso de suelo y vegetación}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-flores2016efecto}{}}%
+Flores Ancira, E., Luna Luna, M., Haubi Segura, C., Dı́az Romo, A., \& Luna Ruiz, J. de J. (2016). Efecto del fuego en producci{ó}n y calidad de zacate rosado en aguascalientes. \emph{Revista Mexicana de Ciencias Agr{ı́}colas}, \emph{7}(6), 1271--1281.
+
+\leavevmode\vadjust pre{\hypertarget{ref-conafor2022}{}}%
+Forestal, C. N. (2022). \emph{Cierre estadístico de incendios 2021}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wwf1995}{}}%
+Found, W. W., \& Group, B. C. (1995). Fires, forests and the future: A crisis raging out of control? In \emph{WWF}. \url{https://wwf.panda.org/wwf_news/?661151\%2Ffires2020report}
+
+\leavevmode\vadjust pre{\hypertarget{ref-francca2020nino}{}}%
+França, F. M., Ferreira, J., Vaz-de-Mello, F. Z., Maia, L. F., Berenguer, E., Ferraz Palmeira, A., Fadini, R., Louzada, J., Braga, R., Hugo Oliveira, V., et al. (2020). El ni{ñ}o impacts on human-modified tropical forests: Consequences for dung beetle diversity and associated ecological processes. \emph{Biotropica}, \emph{52}(2), 252--262.
+
+\leavevmode\vadjust pre{\hypertarget{ref-gomez2010atlas}{}}%
+Gómez-Pompa, A., Krömer, T., \& Castro-Cortés, R. (2010). \emph{Atlas de la flora de veracruz: Un patrimonio natural en peligro}. Veracruz, Gobierno del Estado.
+
+\leavevmode\vadjust pre{\hypertarget{ref-gonccalves2022quantifying}{}}%
+Gonçalves, T. F., Correa, C. M., Audino, L. D., Vaz-de-Mello, F. Z., Fontoura, F. M., \& Guedes, N. M. (2022). Quantifying the post-fire recovery of taxonomic and functional diversity of dung beetles in the brazilian pantanal. \emph{Ecological Entomology}, \emph{47}(4), 601--612.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hothorn2008simultaneous}{}}%
+Hothorn, T., Bretz, F., \& Westfall, P. (2008). Simultaneous inference in general parametric models. \emph{Biometrical Journal: Journal of Mathematical Methods in Biosciences}, \emph{50}(3), 346--363.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hsieh2016inext}{}}%
+Hsieh, T., Ma, K., \& Chao, A. (2016). iNEXT: An r package for rarefaction and extrapolation of species diversity (h ill numbers). \emph{Methods in Ecology and Evolution}, \emph{7}(12), 1451--1456.
+
+\leavevmode\vadjust pre{\hypertarget{ref-jost2006entropy}{}}%
+Jost, L. (2006). Entropy and diversity. \emph{Oikos}, \emph{113}(2), 363--375.
+
+\leavevmode\vadjust pre{\hypertarget{ref-larsen2011insects}{}}%
+Larsen, T. H., Escobar, F., \& Armbrecht, I. (2011). Insects of the tropical andes: Diversity patterns, processes and global change. \emph{Climate Change and Biodiversity in the Tropical Andes}, 228--244.
+
+\leavevmode\vadjust pre{\hypertarget{ref-larsen2005trap}{}}%
+Larsen, T. H., \& Forsyth, A. (2005). Trap spacing and transect design for dung beetle biodiversity studies 1. \emph{Biotropica: The Journal of Biology and Conservation}, \emph{37}(2), 322--325.
+
+\leavevmode\vadjust pre{\hypertarget{ref-losey2006economic}{}}%
+Losey, J. E., \& Vaughan, M. (2006). The economic value of ecological services provided by insects. \emph{Bioscience}, \emph{56}(4), 311--323.
+
+\leavevmode\vadjust pre{\hypertarget{ref-milotic2017linking}{}}%
+Milotić, T., Quidé, S., Van Loo, T., \& Hoffmann, M. (2017). Linking functional group richness and ecosystem functions of dung beetles: An experimental quantification. \emph{Oecologia}, \emph{183}, 177--190.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nichols2011dung}{}}%
+Nichols, E., \& Gardner, T. (2011). Dung beetles as a candidate study taxon in applied biodiversity conservation research. \emph{Ecology and Evolution of Dung Beetles}, 267--291.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nichols2008ecological}{}}%
+Nichols, E., Spector, S., Louzada, J., Larsen, T., Amezquita, S., Favila, M., \& Network, T. S. R. (2008). Ecological functions and ecosystem services provided by scarabaeinae dung beetles. \emph{Biological Conservation}, \emph{141}(6), 1461--1474.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nielsen2015soil}{}}%
+Nielsen, U. N., Wall, D. H., \& Six, J. (2015). Soil biodiversity and the environment. \emph{Annual Review of Environment and Resources}, \emph{40}, 63--90.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nunes2021functional}{}}%
+Nunes, C. A., Barlow, J., França, F., Berenguer, E., Solar, R. R., Louzada, J., Leitão, R. P., Maia, L. F., Oliveira, V. H., Braga, R. F., et al. (2021). Functional redundancy of amazonian dung beetles confers community-level resistance to primary forest disturbance. \emph{Biotropica}, \emph{53}(6), 1510--1521.
+
+\leavevmode\vadjust pre{\hypertarget{ref-oksanen2010vegan}{}}%
+Oksanen, J. (2010). Vegan: Community ecology package. \emph{Http://Vegan. R-Forge. R-Project. Org/}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-pelaezincendios}{}}%
+Peláez, E. J. J., Navarro, F. C., Villeda, R. R., Mathieu, J. C. C., \& Medina, Ó. E. B. (2004). Los incendios forestales en la reserva de la biosfera sierra de manantl{á}n, jalisco y colima. \emph{Incendios Forestales En M{é}xico}, 143.
+
+\leavevmode\vadjust pre{\hypertarget{ref-R2023}{}}%
+R Core Team. (2023). \emph{R: A language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.R-project.org/}
+
+\leavevmode\vadjust pre{\hypertarget{ref-reed2011functional}{}}%
+Reed, S. C., Cleveland, C. C., \& Townsend, A. R. (2011). Functional ecology of free-living nitrogen fixation: A contemporary perspective. \emph{Annual Review of Ecology, Evolution, and Systematics}, \emph{42}, 489--512.
+
+\leavevmode\vadjust pre{\hypertarget{ref-rowell2000global}{}}%
+Rowell, A., Moore, P. F., et al. (2000). \emph{Global review of forest fires}. Citeseer.
+
+\leavevmode\vadjust pre{\hypertarget{ref-saha2021dung}{}}%
+Saha, S., Biswas, A., Ghosh, A., \& Raychaudhuri, D. (2021). Dung beetles: Key to healthy pasture? An overview. \emph{World Scientific News}, \emph{153}(2), 93--123.
+
+\leavevmode\vadjust pre{\hypertarget{ref-santos2018dung}{}}%
+Santos-Heredia, C., Andresen, E., Zárate, D. A., \& Escobar, F. (2018). Dung beetles and their ecological functions in three agroforestry systems in the lacandona rainforest of mexico. \emph{Biodiversity and Conservation}, \emph{27}, 2379--2394.
+
+\leavevmode\vadjust pre{\hypertarget{ref-sasal2010succession}{}}%
+Sasal, Y., Raffaele, E., \& Farji-Brener, A. G. (2010). Succession of ground-dwelling beetle assemblages after fire in three habitat types in the andean forest of NW patagonia, argentina. \emph{Journal of Insect Science}, \emph{10}(1), 37.
+
+\leavevmode\vadjust pre{\hypertarget{ref-uboldi2010analisis}{}}%
+Uboldi, J., Michalijos, P., Barragán, F., \& Mancino, M. (2010). An{á}lisis del evoluci{ó}n pos incendio de un {á}rea con pasturas naturales aplicando geotecnolog{ı́}as. \emph{Jujuy-Argentina}, 27.
+
+\leavevmode\vadjust pre{\hypertarget{ref-vaz2011multilingual}{}}%
+Vaz de Mello, F. Z., Edmonds, W., Ocampo, F. C., \& Schoolmeesters, P. (2011). \emph{A multilingual key to the genera and subgenera of the subfamily scarabaeinae of the new world (coleoptera: scarabaeidae)}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-veldhuis2018spatial}{}}%
+Veldhuis, M. P., Gommers, M. I., Olff, H., \& Berg, M. P. (2018). Spatial redistribution of nutrients by large herbivores and dung beetles in a savanna ecosystem. \emph{Journal of Ecology}, \emph{106}(1), 422--433.
+
+\leavevmode\vadjust pre{\hypertarget{ref-whelan1995ecology}{}}%
+Whelan, R. J. (1995). \emph{The ecology of fire}. Cambridge university press.
+
+\end{CSLReferences}
+
+\end{document}

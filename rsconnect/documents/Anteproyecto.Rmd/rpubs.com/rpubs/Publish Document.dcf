@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1078983/469189d6a7f84c4a8a4bf4e6b39bde5b
+bundleId: https://api.rpubs.com/api/v1/document/1078983/469189d6a7f84c4a8a4bf4e6b39bde5b
+url: http://rpubs.com/DavidVaneAl/1078983
+when: 1694218200.05977
+lastSyncTime: 1694218200.05981

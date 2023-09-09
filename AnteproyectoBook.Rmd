@@ -1,0 +1,171 @@
+---
+title: "QUEMAS EN AGROECOSISTEMAS TROPICALES: SU EFECTO SOBRE LAS FUNCIONES ECOLÓGICAS REALIZADAS POR LOS ESCARABAJOS COPRÓFAGOS"
+author: "David Vanegas-Alarcón"
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_book:
+    keep_tex: yes
+    latex_engine: xelatex
+    citation_package: default
+site: bookdown::bookdown_site
+documentclass: book
+highlight: kate  
+classoption: a4paper
+bibliography: 
+  - bibtex.bib
+link-citations: true
+csl: apa.csl
+
+# Encabezado de cada página:
+header-includes:
+   - \usepackage[utf8]{inputenc}
+   - \usepackage[spanish]{babel}
+#   - \usepackage{biblatex}
+#   - \usepackage{natbib}
+#   - \usepackage{apalike} 
+#   - \usepackage{fancyhdr}
+#   - \pagestyle{fancy}
+#   - \fancyhf{}
+#   - \fancyhead[LO]{\textit{\small{\nouppercase{\leftmark}}}}
+#   - \fancyhead[RE]{\textit{\small{\nouppercase{\rightmark}}}}
+#   - \fancyhead[RO,LE]{\thepage}
+#   - \usepackage{float}
+#   - \floatplacement{figure}{H}
+
+# Formato general:  
+fontsize: 11pt
+linestretch: 1
+toc-depth: 2
+secnumdepth: 1
+lof: False
+lot: False
+geometry: "left=2.5cm, right=2cm, top=2.5cm, bottom=2.5cm"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Información general
+
+Este trabajo tiene como finalidad mostrar los avances que se tienen en el uso de la herramienta R como parte del segundo módulo del curso Introducción a la Investigación del programa de Maestría del Instituto de Ecología A.C.
+
+Para revisar y/o replicar los códigos usados revisar las siguientes plataformas 
+
+<center>
+![](images/github.png){width="350"}
+
+[https://github.com/davidvanegal/Mdulo_II](https://github.com/davidvanegal/Mdulo_II)
+</center><br>
+
+<center>
+![](images/rpubs.png){width="350"}
+
+[https://rpubs.com/DavidVaneAl/1078983](https://rpubs.com/DavidVaneAl/1078983)
+</center><br>
+
+**NOTA: ** Este trabajo contiene información confidencial del autor, si usted no es el destinatario, le informamos que no podrá usar, retener, imprimir, copiar, distribuir o hacer público su contenido; de hacerlo podría tener consecuencias legales. Si ha recibido este trabajo por error, por favor infórmenos y bórrelo. Si usted es el destinatario, le solicitamos mantener reserva sobre el contenido, los datos o información de contacto y en general sobre la información de este documento y/o archivos adjuntos, a no ser que exista una autorización explícita.
+
+<br> 
+<br>
+<br>
+<br>
+
+```{r echo=FALSE, fig.align='center', message=FALSE}
+knitr::include_graphics("images/Inecol.png")
+```
+
+# Introducción
+
+
+Los pastizales son importantes ya que proveen una amplia variedad de servicios ecosistémicos entre los que se incluyen la captura de carbono y la conservación de la biodiversidad [@dinerstein2007resena]. Históricamente, para favorecer y mantener su diversidad y estabilidad, se han utilizado técnicas como el fuego y el pastoreo [@casillo2012quemas; @flores2016efecto], en particular, el fuego es un factor ecológico natural que tiene una gran influencia en las especies y en la dinámica de la vegetación de los pastizales naturales, influyendo en la heterogeneidad estructural [@pelaezincendios; @uboldi2010analisis], sin embargo, este puede tener efectos negativos al rebasar las zonas para la que fue delimitado. Por ejemplo, se ha observado una tendencia al aumento de la superficie afectada y de la severidad de los efectos del fuego [@rowell2000global], donde la superficie anual afectada asciende a 3.4 millones de km^2^ a nivel mundial [@wwf1995]. En México más de 6 016 incendios ocurrieron en 2 021, con un área afectada de más de 469 000 ha [@conafor2022].
+
+El fuego puede causar cambios severos en la diversidad de especies, provocando una simplificación del hábitat [@whelan1995ecology] por los cambios en sus condiciones microclimáticas y en las propiedades químicas del suelo [@sasal2010succession; @cadena2020efecto], el cual es un componente crucial para el para el soporte de la biodiversidad sobre y debajo de la superficie [@coleman2017fundamentals; @nielsen2015soil]. El conocimiento de los efectos del fuego sobre el funcionamiento de los ecosistemas y de su recuperación post fuego, evidencia una relación entre la alteración de los procesos ecológicos y los impactos sobre la biota edáfica [@reed2011functional; @arellano2014efecto]
+
+La fauna edáfica puede ser útil para el entendimiento de los impactos del fuego. En particular, los escarabajos coprófagos son un grupo abundante y diverso [@nichols2011dung] que forman parte de la macrofauna del suelo, siendo importantes para el funcionamiento de los ecosistemas naturales, debido a su hábito alimenticio y comportamiento de nidificación, que tienen como consecuencia la remoción y enterramiento de las heces de vertebrados [@nichols2008ecological; @larsen2011insects; @milotic2017linking], facilitando procesos ecológicos como la bioturbación del suelo y la dinámica de semillas, servicios ecosistémicos de gran valor económico [@arias2022efecto].
+
+A pesar de su importancia en los ecosistemas, y aunque esté en aumento la información sobre este grupo de insectos [@carvalho2020dung], y existan estudios sobre sus funciones ecológicas en agroecosistemas [e.g. @santos2018dung], los estudios que relacionan el efecto del fuego en la diversidad de este grupo son pocos y se han realizado mayoritariamente en Brasil [e.g. @francca2020nino; @nunes2021functional; @gonccalves2022quantifying] y México [e.g. @arellano2014efecto]. Sin embargo, no hay antecedentes de estudios sobre el efecto de la práctica de la quema y de los incendios accidentales en ambientes de pastoreo sobre las funciones ecológicas proporcionadas por los escarabajos coprófagos. En este sentido se hace necesario comprender la complejidad del fuego y su dinámica para crear estrategias de manejo y conservación de los suelos y sus organismos como soporte de los ecosistemas.
+
+# Objetivos
+
+## Objetivo general
+
+Analizar los cambios en la diversidad y funciones ecológicas de los escarabajos coprófagos en agroecosistemas donde existe la práctica de la quema.
+
+## Objetivos específicos
+
+i.  Estimar y comparar los valores de diversidad de escarabajos coprófagos entre diferentes agroecosistemas que hayan sufrido quemas como parte del manejo y en agroecosistemas que no realizan quemas en un periodo de 30 años, tomando en cuenta el régimen del fuego en cada parcela.
+
+ii. Cuantificar y comparar los valores de bioturbación, remoción de heces y dispersión de semillasrealizadas por los escarabajos coprófagos en agroecosistemas que hayan sufrido quemas como parte del manejo y en agroecosistemas que no realizan quemas en un periodo de 30 años, tomando en cuenta el régimen del fuego en cada parcela.
+
+## Pregunta
+
+¿Los valores de diversidad y funciones ecológicas de escarabajos coprófagos son afectados negativamente por el régimen de fuego en agroecosistemas?
+
+## Hipótesis
+
+Los valores de diversidad y funciones ecológicas de escarabajos coprófagos son afectados negativamente por la magnitud, frecuencia e intensidad de las quemas en los ecosistemas, ya que los suelos con mayor superficie, frecuencia e intensidad de quemas presentan cambios negativos en sus propiedades fisicoquímicas, lo que traduce, como una desventaja para el ciclo de vida de estos insectos.
+
+## Predicciones
+
+i.  Los valores de diversidad y funciones ecológicas de escarabajos coprófagos serán menores en agroecosistemas con mayor magnitud, frecuencia e intensidad de quemas.
+
+ii. Los valores de diversidad y funciones ecológicas de escarabajos coprófagos tendrán mayores valores en los sitios con menor superficie, frecuencia e intensidad de quemas.
+
+# Metodología
+
+## Área de estudio
+
+La investigación se realizará en los municipios de Paso de Ovejas, Soledad de Doblado y Puente Nacional en el estado de Veracruz, México (Figura \@ref(fig:sitio)). El clima es cálido subhúmedo, la temperatura media anual es de 22 °C y la precipitación es menor a 1 000 mm anuales [@bautista2022estudio]. El ecosistema original de la zona era la selva baja caducifolia [@gomez2010atlas], actualmente altamente fragmentada por la agricultura y ganadería [@inegi2020].
+
+```{r sitio, echo=FALSE, out.width="70%", fig.align='center', fig.cap= "Sitio de estudio en el estado de Veracruz, México."}
+knitr::include_graphics("images/sitio.png")
+```
+
+## Diseño de estudio
+
+El experimento consistirá en medir las variables de diversidad y funciones ecológicas de los escarabajos coprófagos en 3 tipos de agroecosistemas (vegetación secundaria, pastizales monoespecíficos y pastizales biodiversos) que han sido estudiados según su régimen de manejo ganadero en un trabajo previo [@bautista2022estudio]. Los sitios cuentan con información sobre la intensidad, frecuencia y magnitud de las quemas. La intensidad se clasificó en nula, baja, media y alta según el porcentaje de producción del agroecosistema y la altura de la vegetación. La frecuencia se consideró nula cuando no se practicaba la quema, baja cuando la quema se realizaba cada 4 o más años, moderada cuando la quema se realizaba cada 2 o 3 años y alta cuando la quema se realizaba cada año. La magnitud se consideró baja cuando se quemaba una tercera parte del agroecosistema, moderada cuando se quemaba la mitad del agroecosistema y alta cuando se quemaba toda la superficie del agroecosistema de estudio. Así, se seleccionarán sitios con nula, baja, moderada y alta intensidad, frecuencia y magnitud de quemas por cada tipo de agroecosistema. En cada sitio, se realizarán muestreos radiales de suelo para conocer su condición fisicoquímica (pH, densidad aparente, N, C, P, K, CIC, materia orgánica, textura y humedad relativa). Los sitios estarán expuestos a las mismas condiciones ambientales, manteniendo la misma ubicación para el registro de los datos expuestos.
+
+### Diversidad y composición de los escarabajos coprófagos
+
+En cada sitio se colocarán 3 trampas de caída dispuestas en las esquinas de un triángulo de 50 m de lado [@larsen2005trap]. Las trampas de caída se mantendrán activas por 48 h y consistirán en recipientes plásticos enterrados al nivel del suelo y se protegerán de la lluvia con un plato plástico, con jabón diluido en agua para romper la tensión superficial. Cada trampa se cebará con 50 g de heces frescas de ganado bovino [@arellano2016novel]. Los escarabajos se identificarán utilizando una recopilación de estudios a nivel local, con el apoyo de claves taxonómicas [e.g. @vaz2011multilingual] y la ayuda de especialistas. En cada sitio, se medirá la abundancia y riqueza de la comunidad de los escarabajos.
+
+### Funciones ecológicas de los escarabajos coprófagos
+
+Se medirán las funciones ecológicas de remoción de estiércol, bioturbación y dispersión de semillas. Para ello, se usarán estaciones para medir las funciones a 2 m de cada trampa de caída. Las estaciones para medir las funciones serán dispuestas 10 días antes de la apertura de las trampas de caída, según lo dispuesto por Arias-Álvarez et al. [-@arias2022efecto]. Para cuantificar de manera más precisa las funciones ecológicas de los escarabajos coprófagos, en cada estación de estudio se dispondrá una maceta, de 32 cm de diámetro y 19 cm de profundidad, según lo propuesto por Arellano [-@arellano2016novel]. Se colocará en una malla plástica (25 mm) sobre el suelo, 1.5 kg de estiércol fresco de ganado bovino alimentado con dietas similares y se protegerá de la lluvia con un techo de malla de fibra de vidrio.
+
+Para cuantificar la dispersión de semillas, se usarán cuentas de madera a manera de semillas artificiales, ya que permiten estandarizar los métodos y evitar la remoción de semillas verdaderas por animales [@andresen2002dung]. En cada maceta se colocarán 60 cuentas: 5 de 4 mm, 5 de 5 mm, 10 de 6 mm, 20 de 7 mm, 10 de 8 mm y 10 de 9 mm. Después de 48 h, las heces se recogerán y se pesarán para calcular las heces removidas, realizando la corrección de peso por desecación o hidratación; para esto se colocará en cada sitio 1.5 kg de estiércol fresco, protegida por una malla, para impedir cualquier acceso y actividad de los escarabajos. Posteriormente, se extraerán las cuentas no removidas para calcular la proporción de semillas dispersadas. El suelo excavado por los escarabajos será recogido, secado a una temperatura de 70 °C hasta obtener un peso constante, y posteriormente pesado en una balanza de precisión.
+
+## Análisis de datos
+
+### Diversidad y estructura de los escarabajos coprófagos
+
+Se estimará la completitud de las muestras de escarabajos en cada sitio [@chao2012coverage]. La diversidad de especies en cada parcela se estimará tilizando la aproximación qD de [-@jost2006entropy] y los órdenes de diversidad q0, q1 y q2, y la cobertura de la muestra por medio del paquete *"iNext"* [@hsieh2016inext]. Se utilizará un análisis de Escalamiento Multidimensional No Métrico para comparar la composición de escarabajos entre sitios, con el índice de disimilitud de Bray-Curtis, utilizando el paquete *"vegan"* [@oksanen2010vegan].
+
+### Funciones ecológicas de los escarabajos coprófagos
+
+Se analizarán las funciones de los escarabajos en relación con el régimen de quemas (intensidad, frecuencia y magnitud) mediante el análisis del Modelo Lineal Generalizado (GLM), con los paquetes *"lme4"* [@bates2009package] y *"multcomp"* [@hothorn2008simultaneous], usando el error correspondiente. Todos los análisis se realizarán en el software R [@R2023].
+
+# Calendario de actividades
+
+| Meses             | RB  | DPI | OI  | SS  | FM  | FL  | PD  | AE  | ED  | ADF | PDF |
+|:------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 08-09 / 2023      |  X  |  X  |  X  |     |     |     |     |     |     |     |     |
+| 10 / 2023         |     |  X  |  X  |  X  |     |     |     |     |     |     |     |
+| 11 / 2023         |     |     |     |  X  |     |     |     |     |     |     |     |
+| 01 / 2024         |  X  |     |     |  X  |     |     |     |     |     |     |     |
+| 06-08 / 2024      |     |     |     |     |  X  |  X  |  X  |     |     |     |     |
+| 09-10 / 2024      |     |     |     |     |     |     |     |  X  |     |     |     |
+| 11 / 24 - 02 / 25 |     |     |     |     |     |     |     |     |  X  |     |     |
+| 03-06 / 2025      |     |     |     |     |     |     |     |     |     |  X  |     |
+| 07 / 2025         |     |     |     |     |     |     |     |     |     |     |  X  |
+
+**Los cursos de posgrado se tomarán desde agosto de 2023 hasta julio de 2024**. RB = Revisión bibliográfica, DPI = Desarrollo pregunta de investigación, OI = Organización de la información, SS = Selección de sitios, FM = Fase de muestreo, FL = Fase de laboratorio, PD = Procesamiento de los datos, AE = Análisis estadístico, ED = Elaboración del documento, ADF = Ajuste documento final, PDF = Presentación documento final.
+
+# Importancia teórica y/o aplicada
+
+Desde el punto de vista teórico no se ha analizado el efecto del régimen del fuego sobre la diversidad y las funciones ecológicas de los escarabajos coprófagos en México. Estas medidas tienen una importancia directa en la condición del suelo y en la producción de forrajes, pues en donde hay un ensamble diverso de escarabajos estercoleros la condición de las propiedades físicas del suelo mejoran, lo que se refleja en el aumento del crecimiento de los pastos, el número de hijatos, entre otros [@losey2006economic; @brown2010dung; @arellano2014efecto; @beynon2015application; @alvarado2019linking; @veldhuis2018spatial; @saha2021dung].
+
+
+
+# Bibliografía

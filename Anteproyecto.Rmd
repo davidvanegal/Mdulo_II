@@ -1,0 +1,259 @@
+---
+title: 'QUEMAS EN AGROECOSISTEMAS TROPICALES: SU EFECTO SOBRE LAS FUNCIONES ECOLÓGICAS
+  REALIZADAS POR LOS ESCARABAJOS COPRÓFAGOS'
+author: "David Vanegas-Alarcón"
+date: "`r Sys.Date()`"
+output:
+  
+  word_document: default
+  html_document:
+    df_print: paged
+    toc: true
+    toc_float: true
+    theme: united
+    highlight: tango
+  pdf_document: default
+header-includes:
+   - \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Información general
+
+Este trabajo tiene como finalidad mostrar los avances que se tienen en el uso de la herramienta R como parte del segundo módulo del curso Introducción a la Investigación del programa de Maestría del Instituto de Ecología A.C.
+
+Para revisar y/o replicar los códigos usados revisar las siguientes plataformas 
+
+<center>
+![](images/github.png){width="350"}
+
+[https://github.com/davidvanegal/Mdulo_II](https://github.com/davidvanegal/Mdulo_II)
+</center><br>
+
+<center>
+![](images/rpubs.png){width="350"}
+
+[https://rpubs.com/DavidVaneAl/1078983](https://rpubs.com/DavidVaneAl/1078983)
+</center><br>
+
+**NOTA: ** Este trabajo contiene información confidencial del autor, si usted no es el destinatario, le informamos que no podrá usar, retener, imprimir, copiar, distribuir o hacer público su contenido; de hacerlo podría tener consecuencias legales. Si ha recibido este trabajo por error, por favor infórmenos y bórrelo. Si usted es el destinatario, le solicitamos mantener reserva sobre el contenido, los datos o información de contacto y en general sobre la información de este documento y/o archivos adjuntos, a no ser que exista una autorización explícita.
+
+<br> 
+<br>
+<br>
+<br>
+
+```{r echo=FALSE, fig.align='center', message=FALSE}
+knitr::include_graphics("images/Inecol.png")
+```
+
+<br> 
+<br>
+<br>
+<br>
+
+# Contenido del documento
+
+-   [Introducción](#50)
+-   [Objetivos](#51)
+    -   [Objetivo general](#52)
+    -   [Objetivo específico](#53)
+    -   [Pregunta](#54)
+    -   [Hipótesis](#55)
+    -   [Predicción](#56)
+-   [Metodología](#57)
+    -   [Área de estudio](#58)
+    -   [Diseño de estudio](#59)
+        -   [Diversidad y composición de los escarabajos coprófagos](#60)
+        -   [Funciones ecológicas de los escarabajos coprófagos](#61)
+    -   [Análisis de datos](#62)
+        -   [Diversidad y composición de los escarabajos coprófagos](#63)
+        -   [Funciones ecológicas de los escarabajos coprófagos](#64)
+-   [Referencias bibliográficas](#65)
+-   [Calendario de actividades](#66)
+-   [Importancia teórica y/o aplicada](#67)
+
+# 1. [Introducción]{#50}
+
+Los pastizales son importantes ya que proveen una amplia variedad de servicios ecosistémicos entre los que se incluyen la captura de carbono y la conservación de la biodiversidad [(Dinerstein et al., 2007)](#15). Históricamente, para favorecer y mantener su diversidad y estabilidad, se han utilizado técnicas como el fuego y el pastoreo ([Casillo et al., 2012](#11); [Flores-Ancira et al., 2016](#16)), en particular, el fuego es un factor ecológico natural que tiene una gran influencia en las especies y en la dinámica de la vegetación de los pastizales naturales, influyendo en la heterogeneidad estructural ([Peláez et al., 2004](#34); [Uboldi et al., 2010](#41)), sin embargo, este puede tener efectos negativos al rebasar las zonas para la que fue delimitado. Por ejemplo, se ha observado una tendencia al aumento de la superficie afectada y de la severidad de los efectos del fuego ([Rowell & Moore, 1999](#37)), donde la superficie anual afectada asciende a 3.4 millones de km^2^ a nivel mundial ([World Wide Found & Boston Consulting Group [WWN & BCG], 2020](#43)). En México más de 6 016 incendios ocurrieron en 2 021, con un área afectada de más de 469 000 ha ([Comisión Nacional Forestal [CONAFOR], 2022](#14)).
+
+El fuego puede causar cambios severos en la diversidad de especies, provocando una simplificación del hábitat ([Whelan, 1995](#43)) por los cambios en sus condiciones microclimáticas y en las propiedades químicas del suelo ([Sasal et al., 2010](#40); [Cadena et al., 2020](#9)), el cual es un componente crucial para el para el soporte de la biodiversidad sobre y debajo de la superficie ([Coleman et al., 2004](#13); [Nielsen et al., 2015](#31)). El conocimiento de los efectos del fuego sobre el funcionamiento de los ecosistemas y de su recuperación post fuego, evidencia una relación entre la alteración de los procesos ecológicos y los impactos sobre la biota edáfica ([Reed et al., 2011](#36); [Arellano & Castillo-Guevara, 2014](#3)).
+
+La fauna edáfica puede ser útil para el entendimiento de los impactos del fuego. En particular, los escarabajos coprófagos son un grupo abundante y diverso ([Nichols & Gardner, 2011](#30)) que forman parte de la macrofauna del suelo, siendo importantes para el funcionamiento de los ecosistemas naturales, debido a su hábito alimenticio y comportamiento de nidificación, que tienen como consecuencia la remoción y enterramiento de las heces de vertebrados ([Nichols et al., 2008](#29); [Larsen et al., 2011](#26); [Milotić et al., 2017](#28)), facilitando procesos ecológicos como la bioturbación del suelo y la dinámica de semillas, servicios ecosistémicos de gran valor económico ([Arias-Álvarez et al., 2022](#4)).
+
+A pesar de su importancia en los ecosistemas, y aunque esté en aumento la información sobre este grupo de insectos ([Carvalho et al., 2020](#10)), y existan estudios sobre sus funciones ecológicas en agroecosistemas (e.g. [Santos-Heredia et al., 2018](#39)), los estudios que relacionan el efecto del fuego en la diversidad de este grupo son pocos y se han realizado mayoritariamente en Brasil (e.g. [França et al., 2020](#17); [Nunes et al., 2021](#32); [Gonçalves et al., 2022](#20)) y México (e.g. [Arellano & Castillo-Guevara, 2014](#3)). Sin embargo, no hay antecedentes de estudios sobre el efecto de la práctica de la quema y de los incendios accidentales en ambientes de pastoreo sobre las funciones ecológicas proporcionadas por los escarabajos coprófagos. En este sentido se hace necesario comprender la complejidad del fuego y su dinámica para crear estrategias de manejo y conservación de los suelos y sus organismos como soporte de los ecosistemas.
+
+# 2. [Objetivos]{#51}
+
+## [Objetivo general]{#52}
+
+Analizar los cambios en la diversidad y funciones ecológicas de los escarabajos coprófagos en agroecosistemas donde existe la práctica de la quema.
+
+## [Objetivos específicos]{#53}
+
+i.  Estimar y comparar los valores de diversidad de escarabajos coprófagos entre diferentes agroecosistemas que hayan sufrido quemas como parte del manejo y en agroecosistemas que no realizan quemas en un periodo de 30 años, tomando en cuenta el régimen del fuego en cada parcela.
+
+ii. Cuantificar y comparar los valores de bioturbación, remoción de heces y dispersión de semillasrealizadas por los escarabajos coprófagos en agroecosistemas que hayan sufrido quemas como parte del manejo y en agroecosistemas que no realizan quemas en un periodo de 30 años, tomando en cuenta el régimen del fuego en cada parcela.
+
+## [Pregunta]{#54}
+
+¿Los valores de diversidad y funciones ecológicas de escarabajos coprófagos son afectados negativamente por el régimen de fuego en agroecosistemas?
+
+## [Hipótesis]{#55}
+
+Los valores de diversidad y funciones ecológicas de escarabajos coprófagos son afectados negativamente por la magnitud, frecuencia e intensidad de las quemas en los ecosistemas, ya que los suelos con mayor superficie, frecuencia e intensidad de quemas presentan cambios negativos en sus propiedades fisicoquímicas, lo que traduce, como una desventaja para el ciclo de vida de estos insectos.
+
+## [Predicciones]{#56}
+
+i.  Los valores de diversidad y funciones ecológicas de escarabajos coprófagos serán menores en agroecosistemas con mayor magnitud, frecuencia e intensidad de quemas.
+
+ii. Los valores de diversidad y funciones ecológicas de escarabajos coprófagos tendrán mayores valores en los sitios con menor superficie, frecuencia e intensidad de quemas.
+
+# 3. [Metodología]{#57}
+
+## [Área de estudio]{#58}
+
+La investigación se realizará en los municipios de Paso de Ovejas, Soledad de Doblado y Puente Nacional en el estado de Veracruz, México (Figure 1). El clima es cálido subhúmedo, la temperatura media anual es de 22 °C y la precipitación es menor a 1 000 mm anuales ([Bautista-García et al., 2022](#6)).El ecosistema original de la zona era la selva baja caducifolia ([Gómez-Pompa & Castillo-Campos, 2010](#19)), actualmente altamente fragmentada por la agricultura y ganadería ([Instituto Nacional de Estadística y Geografía [INEGI], 2020](#24)).
+
+```{r echo=FALSE, fig.align='center', message=FALSE, out.width=438, fig.cap= "Fig. 1. Sitio de estudio en el estado de Veracruz, México."}
+knitr::include_graphics("images/sitio.png")
+```
+
+## [Diseño de estudio]{#59}
+
+El experimento consistirá en medir las variables de diversidad y funciones ecológicas de los escarabajos coprófagos en 3 tipos de agroecosistemas (vegetación secundaria, pastizales monoespecíficos y pastizales biodiversos) que han sido estudiados según su régimen de manejo ganadero en un trabajo previo ([Bautista-García et al., 2022](#6)). Los sitios cuentan con información sobre la intensidad, frecuencia y magnitud de las quemas. La intensidad se clasificó en nula, baja, media y alta según el porcentaje de producción del agroecosistema y la altura de la vegetación. La frecuencia se consideró nula cuando no se practicaba la quema, baja cuando la quema se realizaba cada 4 o más años, moderada cuando la quema se realizaba cada 2 o 3 años y alta cuando la quema se realizaba cada año. La magnitud se consideró baja cuando se quemaba una tercera parte del agroecosistema, moderada cuando se quemaba la mitad del agroecosistema y alta cuando se quemaba toda la superficie del agroecosistema de estudio. Así, se seleccionarán sitios con nula, baja, moderada y alta intensidad, frecuencia y magnitud de quemas por cada tipo de agroecosistema. En cada sitio, se realizarán muestreos radiales de suelo para conocer su condición fisicoquímica (pH, densidad aparente, N, C, P, K, CIC, materia orgánica, textura y humedad relativa). Los sitios estarán expuestos a las mismas condiciones ambientales, manteniendo la misma ubicación para el registro de los datos expuestos.
+
+### [Diversidad y composición de los escarabajos coprófagos]{#60}
+
+En cada sitio se colocarán 3 trampas de caída dispuestas en las esquinas de un triángulo de 50 m de lado ([Larsen & Forsyth, 2005](#21)). Las trampas de caída se mantendrán activas por 48 h y consistirán en recipientes plásticos enterrados al nivel del suelo y se protegerán de la lluvia con un plato plástico, con jabón diluido en agua para romper la tensión superficial. Cada trampa se cebará con 50 g de heces frescas de ganado bovino [(Arellano, 2016)](#2). Los escarabajos se identificarán utilizando una recopilación de estudios a nivel local, con el apoyo de claves taxonómicas (e.g. [Vaz-De-Mello et al., 2011](#18)) y la ayuda de especialistas. En cada sitio, se medirá la abundancia y riqueza de la comunidad de los escarabajos.
+
+### [Funciones ecológicas de los escarabajos coprófagos]{#61}
+
+Se medirán las funciones ecológicas de remoción de estiércol, bioturbación y dispersión de semillas. Para ello, se usarán estaciones para medir las funciones a 2 m de cada trampa de caída. Las estaciones para medir las funciones serán dispuestas 10 días antes de la apertura de las trampas de caída, según lo dispuesto por [Arias-Álvarez et al. (2022)](#4). Para cuantificar de manera más precisa las funciones ecológicas de los escarabajos coprófagos, en cada estación de estudio se dispondrá una maceta, de 32 cm de diámetro y 19 cm de profundidad, según lo propuesto por [Arellano (2016)](#2). Se colocará en una malla plástica (25 mm) sobre el suelo, 1.5 kg de estiércol fresco de ganado bovino alimentado con dietas similares y se protegerá de la lluvia con un techo de malla de fibra de vidrio.
+
+Para cuantificar la dispersión de semillas, se usarán cuentas de madera a manera de semillas artificiales, ya que permiten estandarizar los métodos y evitar la remoción de semillas verdaderas por animales ([Andresen, 2002](#44)). En cada maceta se colocarán 60 cuentas: 5 de 4 mm, 5 de 5 mm, 10 de 6 mm, 20 de 7 mm, 10 de 8 mm y 10 de 9 mm. Después de 48 h, las heces se recogerán y se pesarán para calcular las heces removidas, realizando la corrección de peso por desecación o hidratación; para esto se colocará en cada sitio 1.5 kg de estiércol fresco, protegida por una malla, para impedir cualquier acceso y actividad de los escarabajos. Posteriormente, se extraerán las cuentas no removidas para calcular la proporción de semillas dispersadas. El suelo excavado por los escarabajos será recogido, secado a una temperatura de 70 °C hasta obtener un peso constante, y posteriormente pesado en una balanza de precisión.
+
+## [Análisis de datos]{#62}
+
+### [Diversidad y estructura de los escarabajos coprófagos]{#63}
+
+Se estimará la completitud de las muestras de escarabajos en cada sitio ([Chao & Jost, 2012](#12)). La diversidad de especies en cada parcela se estimará tilizando la aproximación qD de [Jost (2006)](#25) y los órdenes de diversidad q0, q1 y q2, y la cobertura de la muestra por medio del paquete *"iNext"* ([Hsieh et al., 2016](#23)). Se utilizará un análisis de Escalamiento Multidimensional No Métrico para comparar la composición de escarabajos entre sitios, con el índice de disimilitud de Bray-Curtis, utilizando el paquete *"vegan"* ([Oksanen et al., 2022](#33)).
+
+### [Funciones ecológicas de los escarabajos coprófagos]{#64}
+
+Se analizarán las funciones de los escarabajos en relación con el régimen de quemas (intensidad, frecuencia y magnitud) mediante el análisis del Modelo Lineal Generalizado (GLM), con los paquetes *"lme4"* ([Bates et al., 2022](#5)) y *"multcomp"* ([Hothorn et al., 2008](#22)), usando el error correspondiente. Todos los análisis se realizarán en el software R ([R Core Team, 2023](#35)).
+
+# 4. [Referencias bibliográficas]{#65}
+
+[Alvarado, F., Dáttilo, W., & Escobar, F. (2019). Linking dung beetle diversity and its ecological function in a gradient of livestock intensification management in the Neotropical region. *Applied Soil Ecology, 143*, 173-180.]{#1}
+
+[Andresen, E. (2002). Dung beetles in a Central Amazonian rainforest and their ecological role as secondary seed dispersers. *Ecological Entomology, 27*(3), 257-270.]{#44}
+
+[Arellano, L. (2016). A novel method for measuring dung removal by tunneler dung beetles (Coleoptera: Scarabaeidae: Scarabaeinae) in pastures. *The Coleopterists Bulletin, 70*(1), 185-188.]{#2}
+
+[Arellano, L., & Castillo-Guevara, C. (2014). Efecto de los incendios forestales no controlados en el ensamble de escarabajos coprófagos (Coleoptera: Scarabaeidae) en un bosque templado del centro de México. *Revista mexicana de biodiversidad, 85*(3), 854-865.]{#3}
+
+[Arias-Álvarez, G. A., Vanegas-Alarcón, D. A., García-Hernández, A. L., Santos-Heredia, C., & Andresen, E. (2022). Effect of vegetation cover on dung beetles (Coleoptera: Scarabaeinae) and their ecological functions in an Andean forest of Colombia. *Revista De Biología Tropical, 70*(1), 53-66.]{#4}
+
+[Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann,H., ...& Grothendieck, G. (2022). Package 'lme4'.]{#5}
+
+[Bautista-García, G., López-Ortiz, S., Pérez-Hernández, P., Murillo-Cuevas, F. D., Ortega-Jiménez, E., & López-Collado, C. J. (2022). Estudio preliminar del pastoreo racional Voisin como herramienta para mejorar las condiciones del suelo después del pastoreo extensivo. *Revista Terra Latinoamericana*, 40.]{#6}
+
+[Beynon, S. A., Wainwright, W. A., & Christie, M. (2015). The application of an ecosystem services framework to estimate the economic value of dung beetles to the UK cattle industry. *Ecological Entomology, 40*, 124-135.]{#7}
+
+[Brown, J., Scholtz, C. H., Janeau, J. L., Grellier, S., & Podwojewski, P. (2010). Dung beetles (Coleoptera: Scarabaeidae) can improve soil hydrological properties. *Applied soil ecology, 46*(1), 9-16.]{#8}
+
+[Cadena, D. A., Flores-Garnica, J. G., Flores-Rodríguez, A. G., & Lomelí-Zavala, M. E. (2020). Efecto de incendios en la vegetación de sotobosque y propiedades químicas de suelo de bosques templados. *Agro productividad, 13*(4).]{#9}
+
+[Carvalho, R. L., Weir, T., Vasconcelos, H. L., & Andersen, A. N. (2020). Dung beetles of an Australian tropical savanna: Species composition, food preferences and responses to experimental fire regimes. *Austral Ecology, 45*(7), 958-967.]{#10}
+
+[Casillo, J., Di Giacomo, A., & Marino, G. (2012). Quemas Controladas en pastizales. Una herramienta para el manejo de astizales con fines productivos conservacionistas. Fundación Vida Silvestre Argentina y Aves Argentinas. Buenos Aires, 19.]{#11}
+
+[Chao, A. & Jost, L. (2012) Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. Ecology, 93, 2533--2547. Chiappy-Jhones, C. J., Gama, L., Soto-Esparza, M., Geissert, D., & Chávez, J. (2002). Regionalización paisajística del estado de Veracruz, México. *Universidad y Ciencia, 18*(36), 87-113.]{#12}
+
+[Coleman, D. C., Callaham, M., & Crossley Jr, D. A. (2004). Fundamentals of soil ecology. Academic press. Second edition.]{#13}
+
+[Comisión Nacional Forestal [CONAFOR]. (2022). Cierre estadístico de incendios 2021.]{#14}
+
+[Dinerstein, E., Olson, D., Atchley, J., Loucks, C., Contreras, S., Abell, R., ... & Quero, C. A. R. (2007). Reseña de la producción y suministro de semilla de especies forrajeras en México. Velazco, ZME; Hernández, GA; Pérezgrovas, R. y Sánchez, MB Producción y manejo de los recursos forrajeros tropicales. Universidad Autónoma de Chiapas (UACH). Tuxtla Gutiérrez, Chiapas, 217-237.]{#15}
+
+[Flores-Ancira,E., Luna Luna,M., Haubi Segura,C., Díaz Romo,A., & Luna Ruiz,J.D.J. (2016). Efecto del fuego en producción y calidad de zacate rosado en Aguascalientes. *Rev. mexicana de ciencias agrícolas, 7*(6), 1271-1281.]{#16}
+
+[França, F. M., Ferreira, J., Vaz‐de‐Mello, F. Z., Maia, L. F., Berenguer, E., Ferraz Palmeira, A., ... & Barlow, J. (2020). El Niño impacts on human‐modified tropical forests: Consequences for dung beetle diversity and associated ecological processes. *Biotropica, 52*(2), 252-262.]{#17}
+
+[Gómez-Pompa, A., & Castillo-Campos, G. (2010). La vegetación de Veracruz. En A. Gómez-Pompa, T. Kromer, & R. Castro-Cortés (coord.). Atlas de la flora de Veracruz: Un patrimonio natural en peligro (pp. 57-76). Xalapa, Veracruz, México: Comisión del Estado de Veracruz para la Conmemoración de la Independencia Nacional y de la Revolución Mexicana.]{#19}
+
+[Gonçalves, T. F., Correa, C. M., Audino, L. D., Vaz‐de‐Mello, F. Z., Fontoura, F. M., & Guedes, N. M. (2022). Quantifying the post‐fire recovery of taxonomic and functional diversity of dung beetles in the Brazilian Pantanal. *Ecological Entomology, 47*(4), 601-612.]{#20}
+
+[Hothorn, T., Bretz, F., & Westfall, P. (2008). Simultaneous Inference in General Parametric Models. *Biometrical Journal, 50*(3), 346-36.]{#22}
+
+[Hsieh, T.C., Ma, K.H. & Chao, A. (2016) iNEXT: An R package for interpolation and extrapolation of species diversity (Hill numbers). Methods in Ecology and Evolution, *7*, 1451-1456.]{#23}
+
+[Instituto Nacional de Estadística y Geografía [INEGI]. (2020). Uso de suelo y vegetación. INEGI México.]{#24}
+
+[Jost, L. (2006). Entropy and diversity. *Oikos, 113*(2), 363-375.]{#25}
+
+[Larsen, T. H., & Forsyth, A. (2005). Trap spacing and transect design for dung beetle biodiversity studies 1. Biotropica: The Journal of Biology and Conservation, 37(2), 322-325.]{#21}
+
+[Larsen, T. H., Escobar, F., & Armbrecht, I. (2011). Insects of the tropical Andes: diversity patterns, processes and global change. *Climate change and biodiversity in the tropical Andes*, 228-244.]{#26}
+
+[Losey, J. E., & Vaughan, M. (2006). The economic value of ecological services provided by insects. *Bioscience, 56*(4), 311-323.]{#27}
+
+[Milotić, T., Quidé, S., Van Loo, T., & Hoffmann, M. (2017). Linking functional group richness and ecosystem functions of dung beetles: an experimental quantification. *Oecologia, 183*(1), 177-190.]{#28}
+
+[Nichols, E.S. & Gardner, T.A. (2011). Dung Beetles as a Candidate Study Taxon in Applied Biodiversity Conservation Research. In Ecology and Evolution of Dung Beetles (eds L.W. Simmons and T.J. Ridsdill-Smith).]{#30}
+
+[Nichols, E., Spector, S., Louzada, J., Larsen, T., Amezquita, S., & Favila, M. E. (2008). Ecological functions and ecosystem services provided by Scarabaeinae dung beetles. *Biological Conservation, 141*(6), 1461-1474.]{#29}
+
+[Nielsen, U. N., Wall, D. H., & Six, J. (2015). Soil biodiversity and the environment. *Annual review of environment and resources, 40*, 63-90.]{#31}
+
+[Nunes, C. A., Barlow, J., França, F., Berenguer, E., Solar, R. R., Louzada, J., ... & Sayer, E. J. (2021). Functional redundancy of Amazonian dung beetles confers community‐level resistance to primary forest disturbance. *Biotropica, 53*(6), 1510-1521.]{#32}
+
+[Oksanen, J., Blanchet, F. G., Kindt, R., Legendre, P., Minchin, P. R., O'hara, R. B., ... & Oksanen, M. J. (2022). Package 'vegan'. Community ecology package, version, 2(6-4), 1-295.]{#33}
+
+[Peláez, E. J. J., Navarro, F. C., Villeda, R. R., Mathieu, J. C. C., & Medina, Ó. E. B. (2004). Los incendios forestales en la reserva de la biosfera Sierra de Manantlán, Jalisco y Colima. Incendios forestales en México, 143.]{#34}
+
+[R Core Team. (2023). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.]{#35}
+
+[Reed, S. C., Cleveland, C. C., & Townsend, A. R. (2011). Functional ecology of free-living nitrogen fixation: a contemporary perspective. *Annual review of ecology, evolution, and systematics, 42*, 489-512.]{#36}
+
+[Rowell, A., & Moore, P.F. (1999). Global review of forest fires. WWF/ UICN. Gland, Suiza, 64 p.]{#37}
+
+[Saha, S., Biswas, A., Ghosh, A., & Raychaudhuri, D. (2021). Dung beetles: key to healthy pasture? An overview. *World Scientific News, 153*(2), 93-123.]{#38}
+
+[Santos-Heredia,C., Andresen,E., Zárate,D.A., & Escobar,F. (2018). Dung beetles and their ecological functions in three agroforestry systems in the Lacandona rainforest of Mexico. *Biodiversity and Conservation, 27*, 2379-2394.]{#39}
+
+[Sasal, Y., Raffaele, E., & Farji-Brener, A. G. (2010). Succession of ground-dwelling beetle assemblages after fire in three habitat types in the Andean forest of NW Patagonia, Argentina. *Journal of insect science (Online)*, 10, 37.]{#40}
+
+[Uboldi, J. A., Michalijos, P. A., Barragán, F., & Mancino, M. (2010). Análisis del evolución pos incendio de un área con pasturas naturales aplicando geotecnologías. Jujuy-Argentina, 27.]{#41}
+
+[Vaz de Mello, F. Z., Edmonds, W. D., Ocampo, F. C., & Schoolmeesters, P. (2011). A multilingual key to the genera and subgenera of the subfamily Scarabaeinae of the New World (Coleoptera: Scarabaeidae).]{#18}
+
+[Veldhuis, M. P., Gommers, M. I., Olff, H., & Berg, M. P. (2018). Spatial redistribution of nutrients by large herbivores and dung beetles in a savanna ecosystem. *Journal of Ecology, 106*(1), 422-433.]{#42}
+
+[Whelan, R. J. (1995). The ecology of fire. Cambridge university press.]{#43}
+
+World Wide Found & Boston Consulting Group [WWN & BCG]. (2020). Fires, forest and the future: A crisis raging out of control?
+
+# 5. [Calendario de actividades]{#66}
+
+| Meses             | RB  | DPI | OI  | SS  | FM  | FL  | PD  | AE  | ED  | ADF | PDF |
+|:------------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 08-09 / 2023      |  X  |  X  |  X  |     |     |     |     |     |     |     |     |
+| 10 / 2023         |     |  X  |  X  |  X  |     |     |     |     |     |     |     |
+| 11 / 2023         |     |     |     |  X  |     |     |     |     |     |     |     |
+| 01 / 2024         |  X  |     |     |  X  |     |     |     |     |     |     |     |
+| 06-08 / 2024      |     |     |     |     |  X  |  X  |  X  |     |     |     |     |
+| 09-10 / 2024      |     |     |     |     |     |     |     |  X  |     |     |     |
+| 11 / 24 - 02 / 25 |     |     |     |     |     |     |     |     |  X  |     |     |
+| 03-06 / 2025      |     |     |     |     |     |     |     |     |     |  X  |     |
+| 07 / 2025         |     |     |     |     |     |     |     |     |     |     |  X  |
+
+**Los cursos de posgrado se tomarán desde agosto de 2023 hasta julio de 2024**. RB = Revisión bibliográfica, DPI = Desarrollo pregunta de investigación, OI = Organización de la información, SS = Selección de sitios, FM = Fase de muestreo, FL = Fase de laboratorio, PD = Procesamiento de los datos, AE = Análisis estadístico, ED = Elaboración del documento, ADF = Ajuste documento final, PDF = Presentación documento final.
+
+# 6. [Importancia teórica y/o aplicada]{#67}
+
+Desde el punto de vista teórico no se ha analizado el efecto del régimen del fuego sobre la diversidad y las funciones ecológicas de los escarabajos coprófagos en México. Estas medidas tienen una importancia directa en la condición del suelo y en la producción de forrajes, pues en donde hay un ensamble diverso de escarabajos estercoleros la condición de las propiedades físicas del suelo mejoran, lo que se refleja en el aumento del crecimiento de los pastos, el número de hijatos, entre otros ([Losey & Vaughan, 2006](#27); [Brown et al., 2010](#8); [Arellano & Castillo-Guevara, 2014](#3); [Beynon et al., 2015](#7); [Alvarado et al., 2019](#1); [Veldhuis et al., 2019](#42); [Saha et al., 2021](#38)).
