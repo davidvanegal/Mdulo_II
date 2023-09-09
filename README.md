@@ -4,15 +4,9 @@ Este trabajo tiene como finalidad mostrar los avances que se tienen en el uso de
 
 Para revisar y/o replicar los códigos usados revisar las siguientes plataformas 
 
-<center>
-[https://github.com/davidvanegal/Mdulo_II](https://github.com/davidvanegal/Mdulo_II)
-</center><br>
+https://github.com/davidvanegal/Mdulo_II
 
-<center>
-[https://rpubs.com/DavidVaneAl/1078983](https://rpubs.com/DavidVaneAl/1078983)
-</center>
-<br>
-
+https://rpubs.com/DavidVaneAl/1078983
 
 **NOTA:** Este trabajo contiene información confidencial del autor, si usted no es el destinatario, le informamos que no podrá usar, retener, imprimir, copiar, distribuir o hacer público su contenido; de hacerlo podría tener consecuencias legales. Si ha recibido este trabajo por error, por favor infórmenos y bórrelo. Si usted es el destinatario, le solicitamos mantener reserva sobre el contenido, los datos o información de contacto y en general sobre la información de este documento y/o archivos adjuntos, a no ser que exista una autorización explícita.
 
